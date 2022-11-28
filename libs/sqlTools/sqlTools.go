@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"gitee.com/nicole-go-libs/print-colors/color_print"
+	"gitee.com/nicole-go-libs/sql-to-struct-lib/internal/service"
 )
 
 var (
@@ -45,6 +46,10 @@ func ConnectSql(sqlConfig SqlConnectConfig) *sql.DB {
 
 	fmt.Println(color_print.Green("数据库连接成功!"))
 	return db
+}
+
+func RunSqlToStruct(dbEngine *sql.DB, dataBaseName string, packageName string, saveFilePwd string, tableName string) {
+	service.SqlTwoStructByTable(dbEngine, dataBaseName, packageName, saveFilePwd, tableName)
 }
 
 func CloseMysql(dbEngine *sql.DB) {

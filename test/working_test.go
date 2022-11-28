@@ -2,7 +2,6 @@ package test
 
 import (
 	"database/sql"
-	"gitee.com/nicole-go-libs/sql-to-struct-lib/internal/service"
 	"gitee.com/nicole-go-libs/sql-to-struct-lib/libs/sqlTools"
 	_ "github.com/go-sql-driver/mysql"
 	"testing"
@@ -28,7 +27,7 @@ func TestWorking(t *testing.T) {
 	DBEngine := sqlTools.ConnectSql(sqlConfig)
 
 	// 查询要转换的表
-	service.SqlTwoStructByTable(DBEngine, sqlConfig.DataBaseName, "entityModel", SaveFilePwd, "dict")
+	sqlTools.RunSqlToStruct(DBEngine, sqlConfig.DataBaseName, "entityModel", SaveFilePwd, "dict")
 
 	if DBEngine != nil {
 		sqlTools.CloseMysql(DBEngine)
